@@ -1,0 +1,34 @@
+<script type="text/javascript">
+    RED.nodes.registerType('SEMIOT',{
+        category: 'function',
+        color: '#87A980' ,
+        defaults: {
+
+            security: {value:""},
+            typeL:{value:""}
+        },
+        inputs:0,
+        outputs:0,
+        icon: "test.png",
+        label: function() {
+            return this.security||"0";
+        }
+    });
+  </script>
+
+<script type="text/x-red" data-template-name="SEMIOT">
+
+    <div class="form-row">
+        <label for="node-input-security"><i class="icon-tag"></i> security degree</label>
+        <input type="number" id="node-input-security" placeholder="between 0 and 5">
+    </div>
+  <div class="form-row">
+     <label for="node-input-typeL"><i class="icon-tag"></i> typeL</label>
+     <input type="text" id="node-input-typeL" placeholder="REQUIRED OR PROVIDED">
+  </div>
+
+</script>
+
+<script type="text/x-red" data-help-name="SEMIOT">
+    <p>A simple node that present security degree </p>
+</script>
