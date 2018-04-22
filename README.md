@@ -1,29 +1,29 @@
-
 # SEMIOT-PROJECT
 
 This package provides a set of tools for a **SE**curity **M**anager for **IOT** based on node-red.
 
-## Usage
-
-1. Install the SEMIOT node module
+### Install the SEMIOT node module
 
         npm install node-red-contrib-semiot
-        
-2. import the flow code file that generate  the security presentation created by the SEMIOT node :
-     ![](https://lh3.googleusercontent.com/QheifFxBP4tXx58J-eZWliXsv6o3Ccc_rv4kctAt4GugE9FOQ20k5vbhuwSXsA7vGAHZXpaG3SM)
+
+  ## Usage      
+  ![](https://image.noelshack.com/fichiers/2018/16/7/1524380538-2018-04-22-08h45-37.png)
+① **Administration Tab :** contains all the functions node to do the necessary traitment 
+   ②**Work Flow Tab** 
+   ③**Initial SEMIoT Flow Tab :** contains our generated security graph from the work flow
+   ④**Final SEMIot Flow Tab :** containes the final security graph after calculate and analyse the security degree and the security label of all nodes
 
 ## Example
 
-![](https://lh3.googleusercontent.com/Z0F6cZBjOFiw2Rc5_gkv6TfeKBMD-q6vX_i-hLeBQRlvIWTQiC-kB8X3fwRf8iJD5vGTScCSpEE)
+![](https://image.noelshack.com/fichiers/2018/16/7/1524383263-2018-04-22-09h28-44.png)
 
-![](https://lh3.googleusercontent.com/RFkmkmBUVc0JjVa7XMH6l1jcWqAJ0tjRJxcZU6IAb1bK3Oukh3pyWtgYMgWs6GlIhzSkwS4096I)
 
-![](https://lh3.googleusercontent.com/X9qOm3tykNBlNg1QW4BOy8CnfLL0MbrYh20gC02ZiQjVZsAbbC_e0gvedCDk0gvKLDrnTaiKOaU)
+![](https://image.noelshack.com/fichiers/2018/16/7/1524405194-2018-04-22-09h51-29.png)
 
-![](https://lh3.googleusercontent.com/B_xpABoy-FrOg2OjfWF_QwIw1mLmWDgxHc7qKd_1L9nkn7Ws-4u7h3o36mRxdRxcdgVmySY8bB0)
+![](https://image.noelshack.com/fichiers/2018/16/7/1524405557-2018-04-22-09h56-43.png)
 
-![](https://lh3.googleusercontent.com/12OEa7wmcJAxy9YIBLVA9Srr1pdxTwgmorpzdDY4j89hXnrj4tPcVwKfJHQ0D6B2maLX-ua9mYE)
+![](https://image.noelshack.com/fichiers/2018/16/7/1524406689-2018-04-22-16h07-59.png)
 
-![](https://lh3.googleusercontent.com/e1eKmYMnRVzDwahqe9zU9OkQ6kU089BCB3niPqKy4cWjo9VD5vDhNGQ94VzXpjHgPurqouQBgbA)
+![](https://image.noelshack.com/fichiers/2018/16/7/1524407179-2018-04-22-16h22-13.png)
 
-![](https://lh3.googleusercontent.com/HkW5vOgcDoM6Yd1DQQeS64yAork8Uk7BHvn_CC9HNf1GRAETDlYqIAaWPkdLdSIwqTu1Owobdxs)
+![](https://image.noelshack.com/fichiers/2018/16/7/1524408061-2018-04-22-16h34-21.png)
