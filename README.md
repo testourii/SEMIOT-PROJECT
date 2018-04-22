@@ -8,10 +8,14 @@ This package provides a set of tools for a **SE**curity **M**anager for **IOT** 
 
   ## Usage      
   ![](https://image.noelshack.com/fichiers/2018/16/7/1524380538-2018-04-22-08h45-37.png)
+  
 ① **Administration Tab :** contains all the functions node to do the necessary traitment 
-   ②**Work Flow Tab** 
-   ③**Initial SEMIoT Flow Tab :** contains our generated security graph from the work flow
-   ④**Final SEMIot Flow Tab :** containes the final security graph after calculate and analyse the security degree and the security label of all nodes
+
+②**Work Flow Tab** 
+
+③**Initial SEMIoT Flow Tab :** contains our generated security graph from the work flow
+
+④**Final SEMIot Flow Tab :** containes the final security graph after calculate and analyse the security degree and the security label of all nodes
 
 ## Example
 
