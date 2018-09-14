@@ -1,0 +1,1318 @@
+[
+    {
+        "id": "733e6e96.aa54f",
+        "type": "tab",
+        "label": "Work Flow",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "edd02289.e3b61",
+        "type": "tab",
+        "label": "Administartion",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "32dea01c.a93fa",
+        "type": "tab",
+        "label": "Initial SEMIoT Flow",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "a1a448df.eca018",
+        "type": "tab",
+        "label": "Final SEMIoT Flow",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "8a77d7f0.5948b8",
+        "type": "subflow",
+        "name": "House 02",
+        "info": "",
+        "in": [],
+        "out": [
+            {
+                "x": 960,
+                "y": 340,
+                "wires": [
+                    {
+                        "id": "bed2f6ef.f48808",
+                        "port": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "1955a185.43188e",
+        "type": "subflow",
+        "name": "House 01",
+        "info": "",
+        "in": [],
+        "out": [
+            {
+                "x": 1000,
+                "y": 360,
+                "wires": [
+                    {
+                        "id": "7f921538.3dd4ac",
+                        "port": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "587b4c0.83a40b4",
+        "type": "subflow",
+        "name": "House 02 (2)",
+        "info": "",
+        "in": [],
+        "out": [
+            {
+                "x": 960,
+                "y": 340,
+                "wires": [
+                    {
+                        "id": "ad19b18d.c51f1",
+                        "port": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "295e2ba1.d6c034",
+        "type": "subflow",
+        "name": "House 01 (2)",
+        "info": "",
+        "in": [],
+        "out": [
+            {
+                "x": 1000,
+                "y": 360,
+                "wires": [
+                    {
+                        "id": "92d29803.28e4c8",
+                        "port": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "641b2030.10a95",
+        "type": "subflow",
+        "name": "House 02 (2) (2)",
+        "info": "",
+        "in": [],
+        "out": [
+            {
+                "x": 960,
+                "y": 340,
+                "wires": [
+                    {
+                        "id": "55d49649.d10038",
+                        "port": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "962f1f88.ae639",
+        "type": "subflow",
+        "name": "House 01 (2) (2)",
+        "info": "",
+        "in": [],
+        "out": [
+            {
+                "x": 1000,
+                "y": 360,
+                "wires": [
+                    {
+                        "id": "43579aa0.8a96a4",
+                        "port": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "a58d6546.e702a8",
+        "type": "subflow",
+        "name": "House 02 (2) (3)",
+        "info": "",
+        "in": [],
+        "out": [
+            {
+                "x": 960,
+                "y": 340,
+                "wires": [
+                    {
+                        "id": "3930636b.e2720c",
+                        "port": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "2a4557fc.5adc58",
+        "type": "subflow",
+        "name": "House 01 (2) (3)",
+        "info": "",
+        "in": [],
+        "out": [
+            {
+                "x": 1000,
+                "y": 360,
+                "wires": [
+                    {
+                        "id": "6c6c292e.97ed58",
+                        "port": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "371310fb.b0d35",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "http://127.0.0.1:1883",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": ""
+    },
+    {
+        "id": "d004c088.9fd62",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "http://127.0.0.1:1883",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": ""
+    },
+    {
+        "id": "e6da2bae.5862f8",
+        "type": "function",
+        "z": "edd02289.e3b61",
+        "name": "Calculate Final configuration",
+        "func": "H=msg.payload\n//*********************\n//ignoring extra nodes\nj=-1;\nT=[];\nfor (k = 0;k < H.length; k++){\n       if ( H[k].type!=\"mqtt-broker\" && H[k].type!=\"tab\" && H[k].type!=\"messagehub service\" ){\nj++;\nT[j]=H[k];\n}\n}\n//*****************************\n\n//add number to each node\nu=0;\nfor (k = 0;k < T.length; k++){\n    node=T[k];\n    if(node.type==\"SEMIOT\"){\n        u++;\n        nodeS= {\n        \"id\": node.id,\n        \"name\":node.name,\n        \"type\": \"SEMIOT\",\n        \"z\": node.z,\n        \"security\": node.security,\n        \"typeL\": node.typeL,\n        \"x\": node.x,\n        \"y\":node.y,\n        \"wires\":node.wires,\n        \"num\":u\n    }\n    T[k]=nodeS ;\n}}\n//****************************\n//add pred list to each node\nfor (k = 0;k < T.length; k++){\n    node=T[k];\n    if(node.type==\"SEMIOT\"){\n    ch=[];th=\"\";\n    for (i = 0;i< T.length; i++){\n         if(T[i].type==\"SEMIOT\"){\n        n=T[i].wires[0];\n        for(j=0;j<n.length;j++)\n        if (n[j]==node.id){\n        ch.push(T[i].id);\n        th=th+\"|\"+T[i].num    \n        }\n    }}\n    if(th===\"\") th=\"Ø\" ;else th=th.substring(1);\n nodeS= {\n        \"id\": node.id,\n        \"name\":node.name,\n        \"type\": \"SEMIOT\",\n        \"z\": node.z,\n        \"security\": node.security,\n        \"typeL\": node.typeL,\n        \"x\": node.x,\n        \"y\":node.y,\n        \"wires\":node.wires,\n        \"num\":node.num,\n        \"pred\":ch,\n        \"predd\":th\n    }\n    T[k]=nodeS ;\n}}\n//*************************\n//add pred list between flow and sub-flows\nfor (k = 0;k < T.length; k++){\n    node=T[k];\nif(node.type==\"subflow\"){\n    ch=\"subflow:\"+node.id ;\n    id=node.out[0].wires[0].id;\n for (j = 0;j< T.length; j++){\n    node1=T[j];\nif(node1.type==ch){\n    n=node1.wires[0][0];\n     for (i = 0;i< T.length; i++){\n         if(T[i].id==n){\n         pred=[id];\n         th=tnum(id);\n         d=T[i];\n          nodeS= {\n        \"id\": d.id,\n        \"name\":d.name,\n        \"type\":d.type,\n        \"z\": d.z,\n        \"security\": d.security,\n        \"typeL\": d.typeL,\n        \"x\": d.x,\n        \"y\":d.y,\n        \"wires\":d.wires,\n        \"pred\":pred,\n        \"num\":d.num,\n        \"predd\":th\n\n    }\n    T[i] =nodeS;    \n}}}}}}\n//*****************************************\n\nfunction tnum(id){\n     k=0\n  while(T[k].id!=id){\n      k++\n  }\n  return T[k].num\n\n}\n//***********************************\n//function that return node by id\nfunction security(id,T) {\n    k=0\n  while(T[k].id!=id){\n      k++\n  }\n  return T[k].security\n}\n//*********************************\n //function determine a predecessor list for node in json array T --return String\n\n// function that return max label\n\nfunction MaxLabel(node,T) {\n   max=node.security\n   pred=node.pred\n   indice=0\n   for(i=0;i<pred.length;i++){\n      \n        s=security(pred[i],T)\n       if (s>max) max=s\n   }\n   return max\n}\n//*****************************************\n//fucntion that check security\nfunction Analyse(L)\n{ verif=true;\n  for(var i=0;i<L.length;i++){\n      if(L[i].type==\"SEMIOT\"&& verif ){\n     max=MaxLabel(L[i],L)\n     if(max>L[i].security) {\n        if((L[i].typeL==\"REQUIRED\")) {\n           L[i].typeL=\"ERROR\" ;\n          verif=false;\n          \n        }\n        else L[i].security=max\n     }\n  }}\n  return L\n}\n//*****************************************\n\n//*********html file******************\nfunction table(T,ty)\n{\n    ch=\"<div class=\\\"tableaux\\\">\"\nch+=\"<TABLE class=\\\"tg\\\"  ><CAPTION>\"+ty+\" configurations</CAPTION>\";\nch+=\"<TR><TH class=\\\"tg-yw4l\\\">num<TH class=\\\"tg-yw4l\\\">sec_deg<TH class=\\\"tg-yw4l\\\">Label-type<TH class=\\\"tg-yw4l\\\">pred\";\n\n for (i =0; i < T.length; i++) {\n     if(T[i].type==\"SEMIOT\"){\n     if (T[i].typeL==\"ERROR\") {\n         ch=ch+\"<TR><TD class=\\\"tg-27kz\\\">\"+String(T[i].num)+\"<TD class=\\\"tg-27kz\\\" colspan=\\\"2\\\">ERROR</center><TD class=\\\"tg-27kz\\\">\"+T[i].predd\n      }else {\n    ch=ch+\"<TR><TD class=\\\"tg-yw4l\\\">\"+String(T[i].num)+\"<TD class=\\\"tg-yw4l\\\">\"+String(T[i].security)+\"<TD class=\\\"tg-yw4l\\\">\"+String(T[i].typeL)+\"<TD class=\\\"tg-yw4l\\\">\"+T[i].predd;\n }}}\nch+=\"</table></div>\";\nreturn ch ;\n}\n//***************************\nvar ch=\"\"\nch=\"<!DOCTYPE html> <html> <head> <title>Security Configurations</title> </head> <body><link rel=\\\"icon\\\" href=\\\"img.png\\\">\";\nch+=\"<style type=\\\"text/css\\\">.tableaux{display:inline-block;vertical-align:top;}\"\nch+=\".tg  {border-collapse:collapse;border-spacing:0;border-color:#999;}\"\nch+=\".tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;}\"\nch+=\".tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#fff;background-color:#26ADE4;}\"\nch+=\".tg .tg-yw4l{vertical-align:top;text-align:center;}\"\nch+=\".tg .tg-27kz{background-color:#ffb7b7;border-color:inherit;text-align:center;vertical-align:top}\"\nch+=\".tg .tg-03cy{text-align:center;background-color:#9ffccd;border-color:inherit;vertical-align:top}</style>\"\nch+=\"<center>\"\nch+=\"<p>&nbsp;</p>\"\nch+=\"<img src=\\\"im.png\\\" alt=\\\"SEMIoT\\\" width=\\\"166\\\" height=\\\"56\\\">\"\n\nch+=\"<p> </p>\"\nch+=table(T,\"initial\")\n//****************************\n \nL=Analyse(T);\n ch+=\" &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; \"\n   ch+=table(L,\"final\")\nch+=\" </center></body> </html>\";\n//*****\nfor(i=0;i<L.length;i++){\n node=L[i];\n if(node.type==\"SEMIOT\"){\n L[i]= {\n        \"id\": node.id,\n        \"name\":node.name,\n        \"type\": \"SEMIOT\",\n        \"z\": node.z,\n        \"security\": node.security,\n        \"typeL\":node.typeL,\n        \"x\": node.x,\n        \"y\":node.y,\n        \"wires\":node.wires,\n        \"num\":node.num,\n        \"predd\":node.predd\n      \n    }\n    if (L[i].typeL==\"ERROR\"){\n        L[i]={\n            \"id\":L[i].id,\n            \"type\":\"error\",\n            \"z\":L[i].z,\n            \"security\": L[i].security,\n            \"typeL\":\"REQUIRED\",\n            \"name\":L[i].name,\n            \"relaxation\":\"OFF\",\n            \"x\":L[i].x,\n            \"y\":L[i].y,\n            \"wires\":L[i].wires,\n            \"num\":L[i].num,\n               \"predd\":L[i].predd\n        }\n    }\n}}\n//*******************************************\n\n//*******************************************\nmsg.payload=ch;\nvar newMsg = { \"payload\": L };\nreturn [msg,newMsg] ;",
+        "outputs": 2,
+        "noerr": 0,
+        "x": 480,
+        "y": 320,
+        "wires": [
+            [
+                "72cc5ab9.0ca8a4"
+            ],
+            [
+                "1efaa507.a1a0db"
+            ]
+        ]
+    },
+    {
+        "id": "72cc5ab9.0ca8a4",
+        "type": "file",
+        "z": "edd02289.e3b61",
+        "name": "Final Config.html",
+        "filename": "C:\\Users\\Houcem\\test\\SEMIoT.html",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "true",
+        "x": 750,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "78820fd.14db1f",
+        "type": "file",
+        "z": "edd02289.e3b61",
+        "name": "SEMIot  Graph",
+        "filename": "C:\\Users\\Houcem\\.node-red\\lib\\flows\\SEMIot Graph.json",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "true",
+        "x": 680,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "1efaa507.a1a0db",
+        "type": "file",
+        "z": "edd02289.e3b61",
+        "name": "Final Graph Flow",
+        "filename": "C:\\Users\\Houcem\\.node-red\\lib\\flows\\Final Graph.json",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "true",
+        "x": 750,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "b3022a4b.5fdc88",
+        "type": "flow-reader",
+        "z": "edd02289.e3b61",
+        "name": "Data Dependence Flow",
+        "protocol": "http",
+        "url": "127.0.0.1:1880",
+        "sheet": "Initial SEMIoT Flow",
+        "auth": false,
+        "once": false,
+        "x": 210,
+        "y": 320,
+        "wires": [
+            [
+                "e6da2bae.5862f8"
+            ]
+        ]
+    },
+    {
+        "id": "2bff315b.27b86e",
+        "type": "function",
+        "z": "edd02289.e3b61",
+        "name": "Calculate after relaxation",
+        "func": "T=msg.payload;\n//delete any extra nodes\nM=[]\nj=-1\nfor (i = 0; i < T.length; i++)\n{\n\nif( T[i].type == \"SEMIOT\" || T[i].type == \"error\" ){\n    j++\n    M[j]=T[i];\n   }\n}\n//add a number for each node\nT=M\nl=0\nfor (i = 0; i < T.length; i++)\n{  if (T[i]) {\n   node=T[i]\n   l++\n   if( T[i].type == \"SEMIOT\"){\n   T[i]= {\n        \"id\":node.id,\n        \"name\":node.name,\n        \"typeL\":node.typeL,\n        \"security\":node.security,\n        \"num\":l,\n        \"wires\":node.wires,\n        \"z\": node.z,\n        \"x\": node.x,\n        \"y\":node.y,\n\n    }\n  }\n  else {\n    T[i]= {\n         \"id\":node.id,\n         \"name\":node.name,\n         \"typeL\":node.typeL,\n         \"security\":node.security,\n         \"relaxation\":node.relaxation,\n         \"num\":l,\n         \"wires\":node.wires,\n         \"z\": node.z,\n         \"x\": node.x,\n         \"y\":node.y,\n\n     }\n  }\n }\n}\n//***************************functions******************************\n//function determine a predecessor list for node in json array T --return String\nfunction Tpred(node,T) {\n    pred=\"\";\n    id=node.id\n      for (i = 0; i < T.length; i++) {\n      //  W=T[i].wires[0]\n      if(T[i].wires[0])\n         for(j=0;j<T[i].wires[0].length;j++){\n            if (id==T[i].wires[0][j]) {\n                  pred+=\"|\"+String(T[i].num);\n              }\n        }\n\n\n     }\n    if (pred===\"\") pred=\"Ø\" ; else  pred = pred.substring(1, pred.length);\n    return pred;\n}\n//function determine a predecessor list for node in json array T --return json array\n\nfunction TpredJ(node,T) {\n    pred=[];\n      for (i = 0; i < T.length; i++) {\n          if(T[i].wires[0]){\n          for(j=0;j<T[i].wires[0].length;j++){\n\n              if (T[i].wires[0][j]==node.id) {\n                  pred.push(T[i].num);\n              }\n\n     }}}\n    if (pred.length===0) pred.push(-1) ;\n    return pred;\n}\n\n// function that return max label\nfunction MaxLabel(node,T) {\n   max=node.security\n   pred=TpredJ(node,T)\n   indice=0\n   for(i=0;i<pred.length;i++){\n       if (T[i]) {\n     if (pred[i]!=-1){\n        s=security(pred[i],T)\n       if (s>max) max=s\n   }}}\n   return max\n}\n//function return  node num i\nfunction security(i,T) {\n    k=0\n  while(T[k].num!=i){\n      k++\n  }\n  return T[k].security\n}\n//fucntion that check security\nfunction Analyse(L)\n{\n  for(var i=0;i<L.length;i++){\n     max=MaxLabel(L[i],L)\n     if(max>L[i].security) {\n       if(L[i].type==\"error\"){\n       if(L[i].relaxation==\"ON\"){\n         L[i]= {\n              \"id\": L[i].id,\n              \"name\": L[i].name,\n              \"typeL\": \"REQUIRED\",\n              \"security\": max,\n              \"num\":l,\n              \"wires\": L[i].wires,\n              \"z\":  L[i].z,\n              \"x\":  L[i].x,\n              \"y\":  L[i].y,\n\n          }\n       }\n      }\n        if(L[i].type==\"SEMIOT\" &&L[i].typeL==\"REQUIRED\") {\n           L[i].typeL=\"ERROR\" ;\n\n        }\n        else   if(L[i].type==\"SEMIOT\") L[i].security=max\n     }\n  }\n  return L\n}\n//*******************************\nfor(k=0;k<T.length;k++){\n  if (T[k]) {\n    T[k]= {\n        \"id\":T[k].id,\n        \"name\":T[k].name,\n        \"num\":T[k].num,\n        \"typeL\":T[k].typeL,\n        \"security\":T[k].security,\n        \"pred\":Tpred(T[k],T),\n        \"wires\":T[k].wires,\n        \"z\": T[k].z,\n        \"x\": T[k].x,\n        \"y\":T[k].y,\n    }\n}}\n//***************\n\n//creation tableau html\nfunction sec(s)\n{if (s==0) return \"low\"\n   else if(s==1) return \"high\"\n}\n\nfunction table(T,L,ty)\n{\n    ch=\"<div class=\\\"tableaux\\\">\"\nch+=\"<TABLE class=\\\"tg\\\"  ><CAPTION>\"+ty+\" configurations</CAPTION>\";\nch+=\"<TR><TH class=\\\"tg-yw4l\\\">num<TH class=\\\"tg-yw4l\\\">sec_deg<TH class=\\\"tg-yw4l\\\">Label-type<TH class=\\\"tg-yw4l\\\">pred\";\n\n for (i =0; i < T.length; i++) {\n     if (T[i].typeL==\"ERROR\") {\n         ch=ch+\"<TR><TD class=\\\"tg-27kz\\\">\"+String(T[i].num)+\"<TD class=\\\"tg-27kz\\\" colspan=\\\"2\\\">ERROR</center><TD class=\\\"tg-27kz\\\">\"+T[i].pred\n     } else if(T[i].security==L[i].security){\n         ch=ch+\"<TR><TD class=\\\"tg-yw4l\\\">\"+String(T[i].num)+\"<TD class=\\\"tg-yw4l\\\">\"+sec(T[i].security)+\"<TD class=\\\"tg-yw4l\\\">\"+String(T[i].typeL)+\"<TD class=\\\"tg-yw4l\\\">\"+T[i].pred\n      }else{\n    ch=ch+\"<TR><TD class=\\\"tg-yw4l\\\">\"+String(T[i].num)+\"<TD class=\\\"tg-03cy\\\">\"+sec(T[i].security)+\"<TD class=\\\"tg-yw4l\\\">\"+String(T[i].typeL)+\"<TD class=\\\"tg-yw4l\\\">\"+T[i].pred;\n }}\nch+=\"</table></div>\";\nreturn ch ;\n}\n//put the result in html code\nvar ch=\"\"\nch=\"<!DOCTYPE html> <html> <head> <title>Security Configurations</title> </head> <body><link rel=\\\"icon\\\" href=\\\"img.png\\\">\";\nch+=\"<style type=\\\"text/css\\\">.tableaux{display:inline-block;vertical-align:top;}\"\nch+=\".tg  {border-collapse:collapse;border-spacing:0;border-color:#999;}\"\nch+=\".tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;}\"\nch+=\".tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#fff;background-color:#26ADE4;}\"\nch+=\".tg .tg-yw4l{vertical-align:top;text-align:center;}\"\nch+=\".tg .tg-27kz{background-color:#ffb7b7;border-color:inherit;text-align:center;vertical-align:top}\"\nch+=\".tg .tg-03cy{text-align:center;background-color:#9ffccd;border-color:inherit;vertical-align:top}</style>\"\nch+=\"<center>\"\nch+=\"<p>&nbsp;</p>\"\nch+=\"<img src=\\\"im.png\\\" alt=\\\"SEMIoT\\\" width=\\\"166\\\" height=\\\"56\\\">\"\n\nch+=\"<p> </p>\"\nch+=table(T,T,\"initial\")\n     ch+=\" &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; \"\nL=Analyse(T)\n   ch+=table(Analyse(T),T,\"final\")\nch+=\" </center></body> </html>\";\n//************************\n\n\nmsg.payload=ch;\nfor(i=0;i<L.length;i++){\n node=L[i]\n L[i]= {\n        \"id\": node.id,\n        \"name\":node.name,\n        \"type\": \"SEMIOT\",\n        \"z\": node.z,\n        \"security\": node.security,\n        \"typeL\":node.typeL,\n        \"x\": node.x,\n        \"y\":node.y,\n        \"wires\":node.wires,\n\n    }\n    if (L[i].typeL==\"ERROR\"){\n        L[i]={\n            \"id\":L[i].id,\n            \"type\":\"error\",\n            \"z\":L[i].z,\n            \"security\": L[i].security,\n            \"typeL\":\"REQUIRED\",\n            \"name\":L[i].name,\n            \"relaxation\":\"OFF\",\n            \"x\":L[i].x,\n            \"y\":L[i].y,\n            \"wires\":L[i].wires}\n    }\n}\nvar newMsg = { \"payload\": L };\nreturn [msg,newMsg] ;\n",
+        "outputs": 2,
+        "noerr": 0,
+        "x": 450,
+        "y": 560,
+        "wires": [
+            [
+                "eccae6c1.ec87e8"
+            ],
+            [
+                "ed0f715f.a1b48"
+            ]
+        ]
+    },
+    {
+        "id": "eccae6c1.ec87e8",
+        "type": "file",
+        "z": "edd02289.e3b61",
+        "name": "Final Config.html",
+        "filename": "C:\\Users\\Houcem\\test\\SEMIoT.html",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "true",
+        "x": 770,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "ed0f715f.a1b48",
+        "type": "file",
+        "z": "edd02289.e3b61",
+        "name": "Final Graph Flow",
+        "filename": "C:\\Users\\Houcem\\.node-red\\lib\\flows\\Final Graph.json",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "true",
+        "x": 810,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "f4227dc7.74fb",
+        "type": "flow-reader",
+        "z": "edd02289.e3b61",
+        "name": "inject Final SEMIoT Flow",
+        "protocol": "http",
+        "url": "127.0.0.1:1880",
+        "sheet": "Final SEMIoT Flow",
+        "auth": false,
+        "once": false,
+        "x": 170,
+        "y": 560,
+        "wires": [
+            [
+                "2bff315b.27b86e"
+            ]
+        ]
+    },
+    {
+        "id": "149fc287.10b0bd",
+        "type": "inject",
+        "z": "8a77d7f0.5948b8",
+        "name": "body temprature sensor ",
+        "topic": "",
+        "payload": "1221",
+        "payloadType": "str",
+        "repeat": "120",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 290,
+        "y": 240,
+        "wires": [
+            [
+                "bed2f6ef.f48808"
+            ]
+        ]
+    },
+    {
+        "id": "ab6b9573.64b718",
+        "type": "inject",
+        "z": "8a77d7f0.5948b8",
+        "name": "light sensor ",
+        "topic": "",
+        "payload": "1213",
+        "payloadType": "str",
+        "repeat": "120",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 330,
+        "y": 180,
+        "wires": [
+            [
+                "bed2f6ef.f48808"
+            ]
+        ]
+    },
+    {
+        "id": "312e9ed0.fb0d32",
+        "type": "inject",
+        "z": "8a77d7f0.5948b8",
+        "name": "blood pressure sensor",
+        "topic": "",
+        "payload": "1221",
+        "payloadType": "str",
+        "repeat": "120",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 290,
+        "y": 320,
+        "wires": [
+            [
+                "bed2f6ef.f48808"
+            ]
+        ]
+    },
+    {
+        "id": "2c63996f.40d426",
+        "type": "inject",
+        "z": "8a77d7f0.5948b8",
+        "name": "presence sensor",
+        "topic": "",
+        "payload": "1221",
+        "payloadType": "str",
+        "repeat": "120",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 370,
+        "y": 380,
+        "wires": [
+            [
+                "bed2f6ef.f48808"
+            ]
+        ]
+    },
+    {
+        "id": "a22479d2.55bdf8",
+        "type": "debug",
+        "z": "8a77d7f0.5948b8",
+        "name": "Light actuator",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 420,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "bed2f6ef.f48808",
+        "type": "function",
+        "z": "8a77d7f0.5948b8",
+        "name": "House 02 analyser",
+        "func": "\nreturn msg;",
+        "outputs": 2,
+        "noerr": 0,
+        "x": 650,
+        "y": 340,
+        "wires": [
+            [
+                "a22479d2.55bdf8"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "21c97759.1a7598",
+        "type": "function",
+        "z": "edd02289.e3b61",
+        "name": "Graph Generator",
+        "func": "H=msg.payload\n//*********************\n//ignoring extra nodes\nj=-1;\nT=[];\nfor (k = 0;k < H.length; k++){\n      if ( H[k].type!=\"mqtt-broker\" && H[k].type!=\"tab\" && H[k].type!=\"messagehub service\" ){\nj++;\nT[j]=H[k];\n}\n}\n//**************************\nk=1;\n//make wires between mqtt input/output nodes\nfor (i = 0; i < T.length; i++)\n{ if(T[i].type==\"mqtt out\"){\n       for(j=0;j<T.length;j++){\n         if ( (T[j].type==\"mqtt in\") && (T[i].topic==T[j].topic)){\n             p=[]\n             p.push(T[j].id);\n             T[i].wires.push(p);\n         }\n       }\n    }\nif(T[i].type==\"kafka\"){\n       for(j=0;j<T.length;j++){\n         if ( (T[j].type==\"kafka in\") && (T[i].topics==T[j].topics)){\n             T[i].wires.push(T[j].id)\n         }\n       }\n    }\n}\n//**************************\n//************\nvar J =\"[\";\nfor (k = 0; k< T.length; k++) {\n   if (  !T[k].type.includes(\"subflow\")){//ignoring extra nodes\n   node=T[k]\n\n   if ((node.type==\"mqtt out\")||(node.type==\"mqtt in\")){\n    wires=[];\n    id=RED.util.generateId();\n    wires.push(id)\n   nodeS= {\n        \"id\": id,\n        \"name\":node.name+\"-ouput\",\n        \"type\": \"SEMIOT\",\n        \"z\": node.z,\n        \"security\": \"\",\n        \"typeL\": \"\",\n        \"x\": node.x,\n        \"y\":node.y+50,\n        \"wires\":[node.wires[0]],\n\n\n    }\n      J=J+JSON.stringify(nodeS);\n            J+=\",\";\n             nodeS= {\n        \"id\": node.id,\n        \"name\":node.name+\"-input\",\n        \"type\": \"SEMIOT\",\n        \"z\": node.z,\n        \"security\": \"\",\n        \"typeL\": \"\",\n        \"x\": node.x,\n        \"y\":node.y,\n        \"wires\":[wires]\n    }\n     J=J+JSON.stringify(nodeS);\n    J+=\",\";\n}\nelse if(node.outputs){\nwires=[];\n\nfor(i=1;i<=node.outputs;i++){\nid=RED.util.generateId();\n   k=k*-1;\n   nodeS= {\n        \"id\": id,\n        \"name\":node.name+\"ouput-\"+i,\n        \"type\": \"SEMIOT\",\n        \"z\": node.z,\n        \"security\": \"\",\n        \"typeL\": \"\",\n        \"x\": node.x,\n        \"y\":node.y+5*k,\n        \"wires\":[node.wires[i-1]]\n    }\n    //*******\n\n    for(u=0;u<T.length;u++){\n        if (T[u].type==\"subflow\")\n        {\n            id1=T[u].out[0].wires[0].id\n        if ((id1==node.id)&&(node.wires[i-1].length===0))\n           T[u].out[0].wires[0].id=id;\n        }\n    }\n    //*******\n      J=J+JSON.stringify(nodeS);\n            J+=\",\";\n    wires.push(id);\n}\nnode.wires=wires;\n nodeS= {\n        \"id\": node.id,\n        \"name\":node.name+\"-input\",\n        \"type\": \"SEMIOT\",\n        \"z\": node.z,\n        \"security\": \"\",\n        \"typeL\": \"\",\n        \"x\": node.x,\n        \"y\":node.y,\n        \"wires\":[wires]\n    }\n     J=J+JSON.stringify(nodeS);\n    J+=\",\";\n}\nelse{\n\n   nodeS= {\n        \"id\": node.id,\n        \"name\":node.name,\n        \"type\": \"SEMIOT\",\n        \"z\": node.z,\n        \"security\": \"\",\n        \"typeL\": \"\",\n        \"x\": node.x,\n        \"y\":node.y,\n        \"wires\":node.wires\n   }\n   if(!nodeS.wires[0]){\n        nodeS= {\n        \"id\": node.id,\n        \"name\":node.name,\n        \"type\": \"SEMIOT\",\n        \"z\": node.z,\n        \"security\": \"\",\n        \"typeL\": \"\",\n        \"x\": node.x,\n        \"y\":node.y,\n        \"wires\":[node.wires]\n   }\n   }\n    J=J+JSON.stringify(nodeS);\n    J+=\",\";\n\n}\n}\n}\n//********\nfor (k = 0; k< T.length; k++) {\n   node=T[k]\nif(node.type.includes(\"subflow\")){\n     J=J+JSON.stringify(node);\n    J+=\",\";\n}}\n//********\nJ = J.substring(0, J.length - 1);\nmsg.payload=J+\"]\";\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 430,
+        "y": 160,
+        "wires": [
+            [
+                "78820fd.14db1f"
+            ]
+        ]
+    },
+    {
+        "id": "953a1a4a.3d17f8",
+        "type": "flow-reader",
+        "z": "edd02289.e3b61",
+        "name": "IoT  Work-Flow",
+        "protocol": "http",
+        "url": "127.0.0.1:1880",
+        "sheet": "Work Flow",
+        "auth": false,
+        "once": true,
+        "x": 180,
+        "y": 160,
+        "wires": [
+            [
+                "21c97759.1a7598"
+            ]
+        ],
+        "icon": "node-red/subflow.png"
+    },
+    {
+        "id": "7cf2c125.772e3",
+        "type": "inject",
+        "z": "1955a185.43188e",
+        "name": "body temprature sensor ",
+        "topic": "",
+        "payload": "1221",
+        "payloadType": "str",
+        "repeat": "120",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 310,
+        "y": 260,
+        "wires": [
+            [
+                "7f921538.3dd4ac"
+            ]
+        ]
+    },
+    {
+        "id": "d40f6266.6cd08",
+        "type": "inject",
+        "z": "1955a185.43188e",
+        "name": "light sensor ",
+        "topic": "",
+        "payload": "1213",
+        "payloadType": "str",
+        "repeat": "120",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 350,
+        "y": 200,
+        "wires": [
+            [
+                "7f921538.3dd4ac"
+            ]
+        ]
+    },
+    {
+        "id": "5b5b1b91.2606f4",
+        "type": "inject",
+        "z": "1955a185.43188e",
+        "name": "blood pressure sensor",
+        "topic": "",
+        "payload": "1221",
+        "payloadType": "str",
+        "repeat": "120",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 310,
+        "y": 340,
+        "wires": [
+            [
+                "7f921538.3dd4ac"
+            ]
+        ]
+    },
+    {
+        "id": "41fdef0a.d44fc",
+        "type": "inject",
+        "z": "1955a185.43188e",
+        "name": "presence sensor",
+        "topic": "",
+        "payload": "1221",
+        "payloadType": "str",
+        "repeat": "120",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 390,
+        "y": 400,
+        "wires": [
+            [
+                "7f921538.3dd4ac"
+            ]
+        ]
+    },
+    {
+        "id": "2cc15e71.99ee92",
+        "type": "debug",
+        "z": "1955a185.43188e",
+        "name": "Light actuator",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 440,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "7f921538.3dd4ac",
+        "type": "function",
+        "z": "1955a185.43188e",
+        "name": "House 01 analyser",
+        "func": "\nreturn msg;",
+        "outputs": 2,
+        "noerr": 0,
+        "x": 670,
+        "y": 360,
+        "wires": [
+            [
+                "2cc15e71.99ee92"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "fbf5df32.47289",
+        "type": "SEMIOT",
+        "z": "587b4c0.83a40b4",
+        "name": "body temprature sensor ",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 310,
+        "y": 240,
+        "wires": [
+            [
+                "9c675413.00da58"
+            ]
+        ]
+    },
+    {
+        "id": "642b3ec8.ab988",
+        "type": "SEMIOT",
+        "z": "587b4c0.83a40b4",
+        "name": "light sensor ",
+        "security": "0",
+        "typeL": "PROVIDED",
+        "x": 340,
+        "y": 180,
+        "wires": [
+            [
+                "9c675413.00da58"
+            ]
+        ]
+    },
+    {
+        "id": "96d8189c.04ac58",
+        "type": "SEMIOT",
+        "z": "587b4c0.83a40b4",
+        "name": "blood pressure sensor",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 300,
+        "y": 320,
+        "wires": [
+            [
+                "9c675413.00da58"
+            ]
+        ]
+    },
+    {
+        "id": "2dd9da33.1da136",
+        "type": "SEMIOT",
+        "z": "587b4c0.83a40b4",
+        "name": "presence sensor",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 390,
+        "y": 380,
+        "wires": [
+            [
+                "9c675413.00da58"
+            ]
+        ]
+    },
+    {
+        "id": "9f53f82f.4b8698",
+        "type": "SEMIOT",
+        "z": "587b4c0.83a40b4",
+        "name": "Light actuator",
+        "security": "0",
+        "typeL": "PROVIDED",
+        "x": 440,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "754694d.73ab96c",
+        "type": "SEMIOT",
+        "z": "587b4c0.83a40b4",
+        "name": "House 02 analyserouput-1",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 690,
+        "y": 260,
+        "wires": [
+            [
+                "9f53f82f.4b8698"
+            ]
+        ]
+    },
+    {
+        "id": "ad19b18d.c51f1",
+        "type": "SEMIOT",
+        "z": "587b4c0.83a40b4",
+        "name": "House 02 analyserouput-2",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 690,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9c675413.00da58",
+        "type": "SEMIOT",
+        "z": "587b4c0.83a40b4",
+        "name": "House 02 analyser-input",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 680,
+        "y": 340,
+        "wires": [
+            [
+                "754694d.73ab96c",
+                "ad19b18d.c51f1"
+            ]
+        ]
+    },
+    {
+        "id": "a24d1320.225b",
+        "type": "SEMIOT",
+        "z": "295e2ba1.d6c034",
+        "name": "body temprature sensor ",
+        "security": "2",
+        "typeL": "PROVIDED",
+        "x": 330,
+        "y": 260,
+        "wires": [
+            [
+                "32113bf8.d09044"
+            ]
+        ]
+    },
+    {
+        "id": "f714fd6.cdac9",
+        "type": "SEMIOT",
+        "z": "295e2ba1.d6c034",
+        "name": "light sensor ",
+        "security": "0",
+        "typeL": "PROVIDED",
+        "x": 360,
+        "y": 200,
+        "wires": [
+            [
+                "32113bf8.d09044"
+            ]
+        ]
+    },
+    {
+        "id": "43c3c44c.80760c",
+        "type": "SEMIOT",
+        "z": "295e2ba1.d6c034",
+        "name": "blood pressure sensor",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 320,
+        "y": 340,
+        "wires": [
+            [
+                "32113bf8.d09044"
+            ]
+        ]
+    },
+    {
+        "id": "ccf8452f.0479f8",
+        "type": "SEMIOT",
+        "z": "295e2ba1.d6c034",
+        "name": "presence sensor",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 410,
+        "y": 400,
+        "wires": [
+            [
+                "32113bf8.d09044"
+            ]
+        ]
+    },
+    {
+        "id": "d3cf769b.f54a98",
+        "type": "SEMIOT",
+        "z": "295e2ba1.d6c034",
+        "name": "Light actuator",
+        "security": "0",
+        "typeL": "PROVIDED",
+        "x": 460,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "68b9ae3c.f80fb",
+        "type": "SEMIOT",
+        "z": "295e2ba1.d6c034",
+        "name": "House 01 analyserouput-1",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 690,
+        "y": 295,
+        "wires": [
+            [
+                "d3cf769b.f54a98"
+            ]
+        ]
+    },
+    {
+        "id": "92d29803.28e4c8",
+        "type": "SEMIOT",
+        "z": "295e2ba1.d6c034",
+        "name": "House 01 analyserouput-2",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 690,
+        "y": 425,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "32113bf8.d09044",
+        "type": "SEMIOT",
+        "z": "295e2ba1.d6c034",
+        "name": "House 01 analyser-input",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 680,
+        "y": 360,
+        "wires": [
+            [
+                "68b9ae3c.f80fb",
+                "92d29803.28e4c8"
+            ]
+        ]
+    },
+    {
+        "id": "3c5e0d40.794702",
+        "type": "SEMIOT",
+        "z": "641b2030.10a95",
+        "name": "body temprature sensor ",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 310,
+        "y": 240,
+        "wires": [
+            [
+                "7c8f5ef6.01848"
+            ]
+        ]
+    },
+    {
+        "id": "398fd057.0d5ba",
+        "type": "SEMIOT",
+        "z": "641b2030.10a95",
+        "name": "light sensor ",
+        "security": "0",
+        "typeL": "PROVIDED",
+        "x": 340,
+        "y": 180,
+        "wires": [
+            [
+                "7c8f5ef6.01848"
+            ]
+        ]
+    },
+    {
+        "id": "57f6b543.31530c",
+        "type": "SEMIOT",
+        "z": "641b2030.10a95",
+        "name": "blood pressure sensor",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 300,
+        "y": 320,
+        "wires": [
+            [
+                "7c8f5ef6.01848"
+            ]
+        ]
+    },
+    {
+        "id": "6db6b79d.0b26a8",
+        "type": "SEMIOT",
+        "z": "641b2030.10a95",
+        "name": "presence sensor",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 390,
+        "y": 380,
+        "wires": [
+            [
+                "7c8f5ef6.01848"
+            ]
+        ]
+    },
+    {
+        "id": "326d0d87.6ab432",
+        "type": "SEMIOT",
+        "z": "641b2030.10a95",
+        "name": "Light actuator",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 440,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2e8f04d6.33105c",
+        "type": "SEMIOT",
+        "z": "641b2030.10a95",
+        "name": "House 02 analyserouput-1",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 690,
+        "y": 260,
+        "wires": [
+            [
+                "326d0d87.6ab432"
+            ]
+        ]
+    },
+    {
+        "id": "55d49649.d10038",
+        "type": "SEMIOT",
+        "z": "641b2030.10a95",
+        "name": "House 02 analyserouput-2",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 690,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7c8f5ef6.01848",
+        "type": "SEMIOT",
+        "z": "641b2030.10a95",
+        "name": "House 02 analyser-input",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 680,
+        "y": 340,
+        "wires": [
+            [
+                "2e8f04d6.33105c",
+                "55d49649.d10038"
+            ]
+        ]
+    },
+    {
+        "id": "c3214eca.c2331",
+        "type": "SEMIOT",
+        "z": "962f1f88.ae639",
+        "name": "body temprature sensor ",
+        "security": "2",
+        "typeL": "PROVIDED",
+        "x": 330,
+        "y": 260,
+        "wires": [
+            [
+                "76220414.0ec5fc"
+            ]
+        ]
+    },
+    {
+        "id": "5844a3df.d00b7c",
+        "type": "SEMIOT",
+        "z": "962f1f88.ae639",
+        "name": "light sensor ",
+        "security": "0",
+        "typeL": "PROVIDED",
+        "x": 360,
+        "y": 200,
+        "wires": [
+            [
+                "76220414.0ec5fc"
+            ]
+        ]
+    },
+    {
+        "id": "11a102f9.c8bccd",
+        "type": "SEMIOT",
+        "z": "962f1f88.ae639",
+        "name": "blood pressure sensor",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 320,
+        "y": 340,
+        "wires": [
+            [
+                "76220414.0ec5fc"
+            ]
+        ]
+    },
+    {
+        "id": "4adcc324.da44dc",
+        "type": "SEMIOT",
+        "z": "962f1f88.ae639",
+        "name": "presence sensor",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 410,
+        "y": 400,
+        "wires": [
+            [
+                "76220414.0ec5fc"
+            ]
+        ]
+    },
+    {
+        "id": "66c1ced0.066b1",
+        "type": "SEMIOT",
+        "z": "962f1f88.ae639",
+        "name": "Light actuator",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 460,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d7f40e78.8ef27",
+        "type": "SEMIOT",
+        "z": "962f1f88.ae639",
+        "name": "House 01 analyserouput-1",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 690,
+        "y": 295,
+        "wires": [
+            [
+                "66c1ced0.066b1"
+            ]
+        ]
+    },
+    {
+        "id": "43579aa0.8a96a4",
+        "type": "SEMIOT",
+        "z": "962f1f88.ae639",
+        "name": "House 01 analyserouput-2",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 690,
+        "y": 425,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "76220414.0ec5fc",
+        "type": "SEMIOT",
+        "z": "962f1f88.ae639",
+        "name": "House 01 analyser-input",
+        "security": "2",
+        "typeL": "PROVIDED",
+        "x": 680,
+        "y": 360,
+        "wires": [
+            [
+                "d7f40e78.8ef27",
+                "43579aa0.8a96a4"
+            ]
+        ]
+    },
+    {
+        "id": "8372b7b8.a0c2c8",
+        "type": "SEMIOT",
+        "z": "a58d6546.e702a8",
+        "name": "body temprature sensor ",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 310,
+        "y": 240,
+        "wires": [
+            [
+                "92510eea.7bd9f"
+            ]
+        ]
+    },
+    {
+        "id": "eb961287.b1bf5",
+        "type": "SEMIOT",
+        "z": "a58d6546.e702a8",
+        "name": "light sensor ",
+        "security": "0",
+        "typeL": "PROVIDED",
+        "x": 340,
+        "y": 180,
+        "wires": [
+            [
+                "92510eea.7bd9f"
+            ]
+        ]
+    },
+    {
+        "id": "cabcb71.ab2df48",
+        "type": "SEMIOT",
+        "z": "a58d6546.e702a8",
+        "name": "blood pressure sensor",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 300,
+        "y": 320,
+        "wires": [
+            [
+                "92510eea.7bd9f"
+            ]
+        ]
+    },
+    {
+        "id": "e53a90ad.c3781",
+        "type": "SEMIOT",
+        "z": "a58d6546.e702a8",
+        "name": "presence sensor",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 390,
+        "y": 380,
+        "wires": [
+            [
+                "92510eea.7bd9f"
+            ]
+        ]
+    },
+    {
+        "id": "5574c2fe.47810c",
+        "type": "SEMIOT",
+        "z": "a58d6546.e702a8",
+        "name": "Light actuator",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 440,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bd65895f.77ae28",
+        "type": "SEMIOT",
+        "z": "a58d6546.e702a8",
+        "name": "House 02 analyserouput-1",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 690,
+        "y": 260,
+        "wires": [
+            [
+                "5574c2fe.47810c"
+            ]
+        ]
+    },
+    {
+        "id": "3930636b.e2720c",
+        "type": "SEMIOT",
+        "z": "a58d6546.e702a8",
+        "name": "House 02 analyserouput-2",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 690,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "92510eea.7bd9f",
+        "type": "SEMIOT",
+        "z": "a58d6546.e702a8",
+        "name": "House 02 analyser-input",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 680,
+        "y": 340,
+        "wires": [
+            [
+                "bd65895f.77ae28",
+                "3930636b.e2720c"
+            ]
+        ]
+    },
+    {
+        "id": "f17c823.fcef58",
+        "type": "SEMIOT",
+        "z": "2a4557fc.5adc58",
+        "name": "body temprature sensor ",
+        "security": "2",
+        "typeL": "PROVIDED",
+        "x": 330,
+        "y": 260,
+        "wires": [
+            [
+                "919a753b.707bb8"
+            ]
+        ]
+    },
+    {
+        "id": "73e8c416.b7cf9c",
+        "type": "SEMIOT",
+        "z": "2a4557fc.5adc58",
+        "name": "light sensor ",
+        "security": "0",
+        "typeL": "PROVIDED",
+        "x": 360,
+        "y": 200,
+        "wires": [
+            [
+                "919a753b.707bb8"
+            ]
+        ]
+    },
+    {
+        "id": "f7648ce2.66876",
+        "type": "SEMIOT",
+        "z": "2a4557fc.5adc58",
+        "name": "blood pressure sensor",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 320,
+        "y": 340,
+        "wires": [
+            [
+                "919a753b.707bb8"
+            ]
+        ]
+    },
+    {
+        "id": "a2d963bc.13096",
+        "type": "SEMIOT",
+        "z": "2a4557fc.5adc58",
+        "name": "presence sensor",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 410,
+        "y": 400,
+        "wires": [
+            [
+                "919a753b.707bb8"
+            ]
+        ]
+    },
+    {
+        "id": "a0864e05.c83c",
+        "type": "SEMIOT",
+        "z": "2a4557fc.5adc58",
+        "name": "Light actuator",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 460,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5fad61c1.0a7e8",
+        "type": "SEMIOT",
+        "z": "2a4557fc.5adc58",
+        "name": "House 01 analyserouput-1",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 690,
+        "y": 295,
+        "wires": [
+            [
+                "a0864e05.c83c"
+            ]
+        ]
+    },
+    {
+        "id": "6c6c292e.97ed58",
+        "type": "SEMIOT",
+        "z": "2a4557fc.5adc58",
+        "name": "House 01 analyserouput-2",
+        "security": "1",
+        "typeL": "PROVIDED",
+        "x": 690,
+        "y": 425,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "919a753b.707bb8",
+        "type": "SEMIOT",
+        "z": "2a4557fc.5adc58",
+        "name": "House 01 analyser-input",
+        "security": "2",
+        "typeL": "PROVIDED",
+        "x": 680,
+        "y": 360,
+        "wires": [
+            [
+                "5fad61c1.0a7e8",
+                "6c6c292e.97ed58"
+            ]
+        ]
+    }
+]
