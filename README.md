@@ -4,7 +4,11 @@ This package provides a set of tools for a **SE**curity **M**anager for **IOT** 
 
 ### Install the SEMIOT node module
 
-        npm install node-red-contrib-semiot
+        **1**-Download SEMIoT Node directory
+        **2**-In the downloaded directory containing the node’s **package.json** file, run: **sudo npm link**
+        **3**-In your node-red user directory, typically **~/.node-red** run: **npm link <name of node module>**
+        
+        
 
   ## Usage      
   ![](https://image.noelshack.com/fichiers/2018/16/7/1524380538-2018-04-22-08h45-37.png)
