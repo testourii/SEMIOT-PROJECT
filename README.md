@@ -4,9 +4,9 @@ This package provides a set of tools for a **SE**curity **M**anager for **IOT** 
 
 ### Install the SEMIOT node module
 
-        **1**-Download SEMIoT Node directory
-        **2**-In the downloaded directory containing the node’s **package.json** file, run: **sudo npm link**
-        **3**-In your node-red user directory, typically **~/.node-red** run: **npm link <name of node module>**
+        1-Download SEMIoT Node directory
+        2-In the downloaded directory containing the node’s package.json file, run: sudo npm link
+       3-In your node-red user directory, typically ~/.node-red** run: npm link <name of node module>
         
         
 
