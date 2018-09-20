@@ -110,7 +110,7 @@ another JSON code.
 
 **SEMIoT Graph:** is a file node that writes the returned code on a file, exports it and gets
 the DDG.
-![](http://image.noelshack.com/fichiers/2018/38/4/1537473997-readme-005.png)
+![](https://lh3.googleusercontent.com/1rClVmSnKz8AD6aUwvkZ3hLOPw8Hg-ZGYVbB5M77b-6QLfnOTIzBz7emE6PQUWVszKN5QultkEVX)
 ```
 Figure 5: A graph generation process described as a Node-RED work-flow
 ```
@@ -136,42 +136,8 @@ script of this algorithm below(Algorithm 1)
 **Output** : DDG (Data Dependence Graph)
 
 **Algorithm 1** DDG generator
+![enter image description here](https://lh3.googleusercontent.com/fBaPpeJYbzZJYzENo0ZRcu4kTAZF1l7pOoaKvHrDoFXZhREAWIDp990iC2AKh1CxDehzvV6StmNY)
 
-```
-1: for each node n ∈ IoTG do. make wires between mqtt(or kafka) nodes with the same
-topic
-2: if n is MQTT ( or KAFKA ) input Node then
-3: for each node M ∈ IoTG do
-4: if M is MQTT ( or KAFKA ) output Node then
-5: if ( M and n ∈ Same Broker ) and ( M and n ∈ Same Topic ) then
-6: add ( M, wires ( n )). wires(n): list of succesors nodes in the IoTG
-7: end if
-8: end if
-9: end for
-10: end if
-11: end for
-12: for each n ∈ IoTG do. begin the generation
-13: if n is input Node then
-14: for each outputi ∈ n do
-15: create node ni
-16: add ( ni, DDG )
-17: end for
-18: else if n is output Node then
-19: add ( n, DDG )
-20: else if n is input/output Node then
-21: add ( n, DDG )
-22: for each outputi ∈ n do
-23: create node ni
-24: add ( ni, DDG )
-25: for each j ∈ wires ( outputi ) do
-26: add ( j, wires ( ni ))
-27: end for
-28: add ( ni, wires ( n ))
-29: end for
-30: end if
-31: end for
-32: return DDG
-```
 
 ```
 The algorithm 1 handles 2 cases:
@@ -185,7 +151,7 @@ Figure 7: Output node and his correspendant in DDG
 **Input/ouput nodes:** in this case, each output connector will replaced by a SEMIoT node
 without forget to set to this node the same wires of the connector.
 
-![](http://image.noelshack.com/fichiers/2018/38/4/1537474892-readme-009.png)
+![enter image description here](https://lh3.googleusercontent.com/MavofwYfSCawJ519Zqy1Taki6o6ii4c0bULOFDHdkq0h55TDycGikuBP2VIPZfkGEy7uK3nBGprI)
 ```
 Figure 8: Input/output node and his correspendant in DDG
 ```
@@ -206,11 +172,11 @@ like:
 - payment service
 - research lab
 
-![](http://image.noelshack.com/fichiers/2018/38/4/1537474892-readme-010.png)
+![enter image description here](https://lh3.googleusercontent.com/tw0NoGe-5ZKSIy8xZbc6B39uEinq8NP19Np13i9fKNLkqTgynipPX6PR6hHlQ5M9H9J-1-2YIQuP)
 ```
 Figure 9: Home automation work-flow
 ```
-![](http://image.noelshack.com/fichiers/2018/38/4/1537474892-readme-011.png)
+![enter image description here](https://lh3.googleusercontent.com/Z1kDgs2aLYPjp1RGTY5I2-aVIJ-ELabFsEmWulDqsOXtwJHsvBi7NhLYgipVsFiwZcU1NPbtO8Bm)
 ```
 Figure 10: House 01 subflow
 ```
@@ -218,11 +184,11 @@ In figure 11, we present the DDG which creates wires between the MQTT nodes and
 replace each one with an SEMIoT input node and SEMIoT output node to set the security
 parameters without changing the subflow nodes. But as we can see in figure 12, the nodes
 in the sub flow were also replaced with an SEMIoT node.
-![](http://image.noelshack.com/fichiers/2018/38/4/1537475035-readme-012.png)
+![enter image description here](https://lh3.googleusercontent.com/kXP-WxgkzU0_5RItO_CRSiByvXeVSk1-AqmuQQaPnLD5fxxyV9BLfdRldmlMukMkM7wOBOhsb-ET)
 ```
 Figure 11: DDG for the master flow
 ```
-![](http://image.noelshack.com/fichiers/2018/38/4/1537475036-readme-013.png)
+![enter image description here](https://lh3.googleusercontent.com/xyg-FUwoatrqF_U6tRGCjFyyBLZn1kJM2aZ5KHr5bBsWmNXscqz29EXpi1dchXBZjpvOBm_c460H)
 ```
 Figure 12: DDG for the sub-flow
 ```
