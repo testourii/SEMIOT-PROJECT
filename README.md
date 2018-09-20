@@ -141,9 +141,8 @@ script of this algorithm below(Algorithm 1)
 ![enter image description here](https://lh3.googleusercontent.com/fBaPpeJYbzZJYzENo0ZRcu4kTAZF1l7pOoaKvHrDoFXZhREAWIDp990iC2AKh1CxDehzvV6StmNY)
 
 
-```
-The algorithm 1 handles 2 cases:
-```
+
+**The algorithm 1 handles 2 cases:**
 **output nodes:** in this case, this node just replaced by a single SEMIoT node without any
 modification just like represents in the figure below.
 ![](http://image.noelshack.com/fichiers/2018/38/4/1537474892-readme-008.png)
